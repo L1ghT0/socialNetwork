@@ -1,0 +1,18 @@
+.header {
+    grid-area: header;
+    background-color: gainsboro;
+}
+
+.header img {
+    width: 40px;
+    padding-left: 20px;
+    padding-top: 5px;
+}
+
+.auth{
+    float: right;
+}
+
+.auth a{
+    color: black;
+}

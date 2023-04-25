@@ -1,0 +1,16 @@
+.nav {
+    grid-area: nav;
+    background-color: gainsboro;
+    padding-left: 20px;
+    padding-top: 10px;
+}
+
+.nav a{
+    color: white;
+    text-decoration: none;
+}
+
+.nav a.active{
+    color: darkgrey;
+}
+
