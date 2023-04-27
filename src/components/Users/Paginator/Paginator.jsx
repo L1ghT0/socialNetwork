@@ -4,13 +4,13 @@ import P_classes from './Paginator.module.css'
 
 const Paginator = (props) => {
 
-    let pages = [];
-
-    let lastPade = Math.ceil(props.totalUsersCount / props.pageSize);
     let firstPage = 1;
+    let lastPade = Math.ceil(props.totalUsersCount / props.pageSize);
     let prevPage = props.currentPage - 1 <= firstPage ? null :  props.currentPage - 1;
     let nextPage = props.currentPage + 1 >= lastPade ? null :  props.currentPage + 1;
 
+    let pages = [firstPage, prevPage, props.currentPage, nextPage, lastPade];
+    pages = pages.filter((page, index) => pages.indexOf(page) === index && page !== null)
     const handlePageChange = (page) => {
         if(page === props.currentPage){
             return;
@@ -18,29 +18,12 @@ const Paginator = (props) => {
         props.onPageChanged(page);
     }
 
-    pages.push(firstPage);
-
-    if(prevPage){
-        pages.push(prevPage);
-    }
-
-    if(firstPage !== props.currentPage && props.currentPage !== lastPade){
-        pages.push(props.currentPage);
-    }
-
-    if(nextPage){
-        pages.push(nextPage);
-    }
-
-    pages.push(lastPade);
-
-
     pages = pages.map(p => {
-            return <>
-                     {p === lastPade && nextPage + 1 !== p && <span>...</span>}
-                    <span className={props.currentPage === p && P_classes.selectedPage} onClick={()=>handlePageChange(p)}>{p}</span>
-                     {p === 1 && prevPage && prevPage - 1 !== p && <span>...</span>}
-                 </>
+        return  <>
+                {p === lastPade && nextPage && nextPage + 1 !== p && <span>...</span>}
+                <span className={props.currentPage === p && P_classes.selectedPage} onClick={()=>handlePageChange(p)}>{p}</span>
+                {p === 1 && prevPage && prevPage - 1 !== p && <span>...</span>}
+                </>
     })
 
     return (
