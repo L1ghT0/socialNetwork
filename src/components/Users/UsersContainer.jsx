@@ -20,8 +20,8 @@ import {
 const UsersContainer = (props) => {
 
     useEffect(()=>{
-        props.requestUsers(props.currentPage, props.pageSize);
-    }, [])
+        props.requestUsers();
+    }, [!props.users])
 
     const onPageChanged = (e) => {
         props.requestUsers(+e.target.innerText, props.pageSize);
