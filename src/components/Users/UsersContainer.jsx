@@ -23,8 +23,8 @@ const UsersContainer = (props) => {
         props.requestUsers();
     }, [!props.users])
 
-    const onPageChanged = (e) => {
-        props.requestUsers(+e.target.innerText, props.pageSize);
+    const onPageChanged = (page) => {
+        props.requestUsers(page, props.pageSize);
     }
 
     return (<> {props.isFetching ? <Preloader /> : null}

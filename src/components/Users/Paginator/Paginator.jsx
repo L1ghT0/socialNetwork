@@ -1,20 +1,51 @@
 import React from 'react';
-import U_classes from './../Users.module.css'
+import P_classes from './Paginator.module.css'
 
 const Paginator = (props) => {
 
     let pages = [];
-    // let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
-    let pagesCount = 20;
-    for (let i = 1; i <= pagesCount; i++) {
-        pages.push(i);
+
+    let lastPade = Math.ceil(props.totalUsersCount / props.pageSize);
+    let firstPage = 1;
+    let prevPage = props.currentPage - 1 <= firstPage ? null :  props.currentPage - 1;
+    let nextPage = props.currentPage + 1 >= lastPade ? null :  props.currentPage + 1;
+
+    const handlePageChange = (page) => {
+        if(page === props.currentPage){
+            return;
+        }
+        props.onPageChanged(page);
     }
+
+    pages.push(firstPage);
+
+    if(prevPage){
+        pages.push(prevPage);
+    }
+
+    if(firstPage !== props.currentPage && props.currentPage !== lastPade){
+        pages.push(props.currentPage);
+    }
+
+    if(nextPage){
+        pages.push(nextPage);
+    }
+
+    pages.push(lastPade);
+
+
     pages = pages.map(p => {
-        return <span className={props.currentPage === p && U_classes.selectedPage}>{p}</span>
+        if(p === 1 && prevPage && prevPage - 1 !== p){
+            return <><span className={props.currentPage === p && P_classes.selectedPage} onClick={()=>handlePageChange(p)}>{p}</span><span>...</span></>
+        }
+        if(p === lastPade && nextPage && nextPage + 1 !== p){
+            return <><span>...</span><span className={props.currentPage === p && P_classes.selectedPage} onClick={()=>handlePageChange(p)}>{p}</span></>
+        }
+        return <span className={props.currentPage === p && P_classes.selectedPage} onClick={()=>handlePageChange(p)}>{p}</span>
     })
 
     return (
-        <div className={U_classes.pages} onClick={props.onPageChanged}>{pages}</div>
+        <div className={P_classes.pages}>{pages}</div>
     );
 }
 

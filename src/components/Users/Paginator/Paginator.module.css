@@ -1,0 +1,25 @@
+
+.pages .selectedPage{
+    color: white;
+    background-color: gray;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 45px;
+    width: 45px;
+    height: 45px;
+    padding: 0;
+    font-weight: bold;
+}
+
+.pages span{
+    cursor: pointer;
+    padding: 5px;
+}
+
+.pages {
+    display: flex;
+    align-items: center;
+    border: 3px solid gray;
+    border-radius: 50px;
+    width: fit-content;
+}
