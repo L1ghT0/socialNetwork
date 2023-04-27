@@ -12,7 +12,7 @@ const Paginator = (props) => {
     let pages = [firstPage, prevPage, props.currentPage, nextPage, lastPade];
     pages = pages.filter((page, index) => pages.indexOf(page) === index && page !== null)
     const handlePageChange = (page) => {
-        if(page === props.currentPage){
+        if(page === props.currentPage || page < 1 || page > lastPade){
             return;
         }
         props.onPageChanged(page);
@@ -27,7 +27,11 @@ const Paginator = (props) => {
     })
 
     return (
-        <div className={P_classes.pages}>{pages}</div>
+        <div className={P_classes.pages}>
+            <div className={P_classes.arrow + ' ' + P_classes.left} onClick={()=>handlePageChange(props.currentPage - 1)}></div>
+            {pages}
+            <div className={P_classes.arrow + ' ' + P_classes.right} onClick={()=>handlePageChange(props.currentPage + 1)}></div>
+        </div>
     );
 }
 

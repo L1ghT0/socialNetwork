@@ -4,16 +4,18 @@
     background-color: gray;
     border-radius: 50%;
     text-align: center;
-    line-height: 45px;
-    width: 45px;
-    height: 45px;
+    line-height: 30px;
+    width: 31px;
+    height: 31px;
     padding: 0;
     font-weight: bold;
+    font-size: 12px;
+
 }
 
 .pages span{
     cursor: pointer;
-    padding: 5px;
+    padding: 3px 5px 3px 5px;
 }
 
 .pages {
@@ -22,4 +24,25 @@
     border: 3px solid gray;
     border-radius: 50px;
     width: fit-content;
+}
+
+.arrow {
+    margin: 10px 10px 0 10px;
+    width: 7px;
+    height: 7px;
+    border-top: 3px solid gray;
+    border-right: 3px solid gray;
+}
+
+.left {
+     transform: translate3d(0,-50%,0) rotate(-135deg);
+ }
+
+.right {
+    transform: translate3d(0,-50%,0) rotate(45deg);
+ }
+.arrow:hover {
+    cursor: pointer;
+    border-top: 3px solid black;
+    border-right: 3px solid black;
 }
