@@ -1,7 +1,7 @@
 import React from 'react';
-import U_classes from './Users.module.css'
 import User from "./User/User";
 import Paginator from "./Paginator/Paginator";
+import Preloader from "../common/preloader/Preloader";
 
 const Users = (props) => {
 
@@ -11,10 +11,14 @@ const Users = (props) => {
                        onPageChanged={props.onPageChanged}
                        totalUsersCount={props.totalUsersCount}
                        pageSize={props.pageSize}/>
-            <User users={props.users}
+            {
+                props.isFetching
+                ? <Preloader />
+                : <User users={props.users}
                   followingInProgress={props.followingInProgress}
                   follow={props.follow}
                   unfollow={props.unfollow}/>
+            }
         </div>
 
     );

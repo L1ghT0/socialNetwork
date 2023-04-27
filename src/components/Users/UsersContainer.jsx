@@ -6,7 +6,6 @@ import {
 } from "../../redux/UsersReducer";
 import Users from "./Users";
 import React, {useEffect} from "react";
-import Preloader from "./../common/preloader/Preloader"
 import {
     getCurrentPage,
     getFollowingInProgress,
@@ -27,9 +26,9 @@ const UsersContainer = (props) => {
         props.requestUsers(page, props.pageSize);
     }
 
-    return (<> {props.isFetching ? <Preloader /> : null}
+    return (
         <Users {...props} onPageChanged={onPageChanged}/>
-    </>)
+    )
 }
 
 
