@@ -1,6 +1,7 @@
 import React from 'react';
 import P_classes from './Paginator.module.css'
 
+
 const Paginator = (props) => {
 
     let pages = [];
@@ -35,13 +36,11 @@ const Paginator = (props) => {
 
 
     pages = pages.map(p => {
-        if(p === 1 && prevPage && prevPage - 1 !== p){
-            return <><span className={props.currentPage === p && P_classes.selectedPage} onClick={()=>handlePageChange(p)}>{p}</span><span>...</span></>
-        }
-        if(p === lastPade && nextPage && nextPage + 1 !== p){
-            return <><span>...</span><span className={props.currentPage === p && P_classes.selectedPage} onClick={()=>handlePageChange(p)}>{p}</span></>
-        }
-        return <span className={props.currentPage === p && P_classes.selectedPage} onClick={()=>handlePageChange(p)}>{p}</span>
+            return <>
+                     {p === lastPade && nextPage + 1 !== p && <span>...</span>}
+                    <span className={props.currentPage === p && P_classes.selectedPage} onClick={()=>handlePageChange(p)}>{p}</span>
+                     {p === 1 && prevPage && prevPage - 1 !== p && <span>...</span>}
+                 </>
     })
 
     return (
