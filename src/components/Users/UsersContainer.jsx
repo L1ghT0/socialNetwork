@@ -78,6 +78,6 @@ let mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
     follow,
     unfollow,
-    toggleFollowingInProgress,
+    toggleFollowingInProgress, // this method is not used ?
     requestUsers
 })(UsersContainer);
