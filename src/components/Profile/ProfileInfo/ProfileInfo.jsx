@@ -8,12 +8,21 @@ const ProfileInfo = (props) => {
     if (!props.profile){
         return <Preloader />
     }
+
+    const onAvatarChange = (e) => {
+        if(e.target.files.length){
+            props.updateAvatar(e.target.files[0]);
+        }
+    }
+
     return (
         <div className={PI_classes.cover}>
             <div>
-                <img src={props.profile.photos.large || avatar} className={PI_classes.avatar} alt="Avatar"/>
-                <ProfileStatus status={props.status}
-                               updateStatus={props.updateStatus}/>
+                <div>
+                     <img src={props.profile.photos.large || avatar} className={PI_classes.avatar} alt="Avatar"/>
+                    {props.isOwner && <input type="file" onChange={onAvatarChange}/>}
+                </div>
+                <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
             </div>
             <div className={PI_classes.descriptionBlock}>
                 descriptionBlock

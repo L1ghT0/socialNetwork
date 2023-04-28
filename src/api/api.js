@@ -36,6 +36,16 @@ export const profileApi = {
     },
     updateStatus(status){
         return instance.put('profile/status', { status: status })
+    },
+    updateAvatar(avatar){
+        const formData = new FormData();
+        formData.append('image', avatar);
+
+        return instance.put('profile/photo', formData, {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        })
     }
 }
 
