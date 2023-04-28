@@ -5,6 +5,7 @@ const SET_USER_PROFILE = 'SET_USER_PROFILE'
 const SET_STATUS = 'SET_STATUS'
 const DELETE_POST = 'DELETE_POST'
 const UPDATE_AVATAR = 'UPDATE_AVATAR'
+const SET_IS_OWNER = 'SET_IS_OWNER'
 
 
 let initialState = {
@@ -13,6 +14,7 @@ let initialState = {
         {id: 2, postText: 'Its my first post', Likes: 6}
     ],
     status: '',
+    isOwner: false,
     profile: {
         photos: {
             large: null,
@@ -54,6 +56,11 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 profile: {...state.profile, photos: action.photos}
             }
+        case SET_IS_OWNER:
+            return {
+                ...state,
+                isOwner: action.isOwner
+            }
         default:
             break;
     }
@@ -65,7 +72,7 @@ export const deletePost = (postId) => ({type: DELETE_POST, postId});
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile});
 export const setStatus = (status) => ({type: SET_STATUS, status});
 export const updateAvatarSuccess = (photos) => ({type: UPDATE_AVATAR, photos});
-
+export const setIsOwner = (isOwner) => ({type: SET_IS_OWNER, isOwner});
 
 
 export const getUserProfile = (userId) => (dispatch) => {
