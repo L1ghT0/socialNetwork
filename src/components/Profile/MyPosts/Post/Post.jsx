@@ -5,7 +5,7 @@ import avatar from "../../../../assets/images/avatar.png";
 const Post = (props) => {
     return (
         <div className={P_classe.post}>
-            <img src={avatar} alt=""/>
+            <img src={props.photos.small || avatar} alt=""/>
             {props.postText}
             <div>
                 <span>Likes: {props.likes}</span>
