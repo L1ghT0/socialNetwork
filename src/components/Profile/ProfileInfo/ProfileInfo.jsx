@@ -2,6 +2,7 @@ import React from 'react';
 import PI_classes from './ProfileInfo.module.css'
 import Preloader from "../../common/preloader/Preloader";
 import ProfileStatus from "./ProfileStatus";
+import avatar from '../../../assets/images/avatar.png'
 
 const ProfileInfo = (props) => {
     if (!props.profile){
@@ -9,9 +10,8 @@ const ProfileInfo = (props) => {
     }
     return (
         <div className={PI_classes.cover}>
-            {/*<img src="https://img5.goodfon.ru/wallpaper/nbig/6/c5/colors-wallpaper-polymer-clay.jpg" alt=""/>*/}
             <div>
-                <img src={props.profile.photos.large} alt=""/>
+                <img src={props.profile.photos.large || avatar} className={PI_classes.avatar} alt="Avatar"/>
                 <ProfileStatus status={props.status}
                                updateStatus={props.updateStatus}/>
             </div>
