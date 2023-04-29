@@ -23,7 +23,7 @@ const ProfileStatus = (props) => {
         <div>
             {!editMode &&
                 <div>
-                    <span onClick={() => {setEditMode(true)}}>{props.status || "No status"}</span>
+                    <span onClick={() => {setEditMode(props.isOwner)}}>{props.status || "No status"}</span>
                 </div>
             }
             {editMode &&

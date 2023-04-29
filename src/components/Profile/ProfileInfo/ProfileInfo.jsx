@@ -22,7 +22,7 @@ const ProfileInfo = (props) => {
                      <img src={props.profile.photos.large || avatar} className={PI_classes.avatar} alt="Avatar"/>
                     {props.isOwner && <input type="file" onChange={onAvatarChange}/>}
                 </div>
-                <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
+                <ProfileStatus status={props.status} updateStatus={props.updateStatus} isOwner={props.isOwner}/>
             </div>
             <div className={PI_classes.descriptionBlock}>
                 descriptionBlock
