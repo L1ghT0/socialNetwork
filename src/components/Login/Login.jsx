@@ -20,6 +20,10 @@ const LoginForm = (props) => {
             <div>
                 <Field type="checkbox" name={'rememberMe'} component={Input}/> remember me
             </div>
+
+            {props.captchaUrl && <img src={props.captchaUrl} alt="captcha"/>}
+            {props.captchaUrl && <Field name={'captcha'} validate={[required]} component={Input}/>}
+
             {
                 props.error &&
                 <div className={FC_classes.formSummaryError}>
@@ -39,7 +43,7 @@ const Login = (props) => {
     const navigate = useNavigate();
 
     let onSubmit = (formData) => {
-        props.login(formData.email, formData.password, formData.rememberMe)
+        props.login(formData.email, formData.password, formData.rememberMe, formData.captcha)
     }
 
     if(props.isAuthorized){
@@ -50,13 +54,14 @@ const Login = (props) => {
     return (
         <div>
             <div>Login</div>
-            <LoginReduxForm onSubmit={onSubmit}/>
+            <LoginReduxForm onSubmit={onSubmit} captchaUrl={props.captchaUrl}/>
         </div>
     )
 }
 
 const mapStateToProps = (state) => {
     return {
+        captchaUrl: state.auth.captchaUrl,
         isAuthorized: state.auth.isAuthorized
     }
 }
