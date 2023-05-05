@@ -15,17 +15,14 @@ const ProfileContainer = (props) => {
     } else {
         props.setIsOwner(false);
     }
+
     useEffect(() => {
         props.getUserProfile(userId);
         props.getStatus(userId);
     }, [userId])
-    console.log('ProfileContainer');
+
     return (
-        <Profile {...props}
-                 isOwner={props.isOwner}
-                 profile={props.profile}
-                 status={props.status}
-                 updateStatus={props.updateStatus}/>
+        <Profile {...props}/>
     );
 }
 

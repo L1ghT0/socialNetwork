@@ -1,0 +1,42 @@
+.avatarWrapper{
+    position: relative;
+    max-width: 150px;
+    max-height: 150px;
+    display: inline-block;
+}
+
+.photo{
+    border-radius: 50%;
+    max-width: inherit;
+}
+
+.uploadAvatar input {
+    display: none;
+}
+.uploadAvatar {
+    position: absolute;
+    top: 75%;
+    left: 75%;
+    width: 33px;
+    height: 33px;
+    background-color: whitesmoke;
+    border-radius: 50%;
+}
+
+.uploadAvatar label{
+    display: inline-block;
+    border-radius: 100px;
+    border: 1px solid dimgrey;
+    text-align: center;
+    align-items: center;
+    width: 80%;
+    height: 80%;
+    margin: 2px;
+    background-image: url("./../../../../assets/images/icon-camera.png");
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.uploadAvatar label:hover {
+    background-color: gainsboro;
+}
