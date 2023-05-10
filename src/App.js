@@ -24,14 +24,16 @@ function App(props) {
     return (
         <div className="app-wrapper">
             <HeaderContainer/>
-            <Navbar/>
-            <div className="app-wrapper-content">
-                <Routes>
-                    <Route path='/profile/:userId?' element={<ProfileContainer/>}/>
-                    <Route path='/dialogs/*' element={<DialogsContainer/>}/>
-                    <Route path='/users/*' element={<UsersContainer />}/>
-                    <Route path='/login' element={<Login />}/>
-                </Routes>
+            <div className="page_layout">
+                <Navbar/>
+                <div className="app-wrapper-content">
+                    <Routes>
+                        <Route path='/profile/:userId?' element={<ProfileContainer/>}/>
+                        <Route path='/dialogs/*' element={<DialogsContainer/>}/>
+                        <Route path='/users/*' element={<UsersContainer />}/>
+                        <Route path='/login' element={<Login />}/>
+                    </Routes>
+                </div>
             </div>
         </div>
     );

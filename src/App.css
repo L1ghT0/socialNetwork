@@ -1,17 +1,16 @@
 
 .app-wrapper{
-    margin: 0 auto;
+}
+
+.page_layout {
     display: grid;
     width: 1200px;
+    margin: 10px auto 0;
 
-    grid-template-areas:"header header"
-                        "nav profile";
-
-    grid-template-rows: 60px 1fr;
+    grid-template-areas: "nav profile";
     grid-template-columns: 2fr 10fr;
     grid-gap: 10px;
 }
-
 
 .app-wrapper-content {
     grid-area: profile;
