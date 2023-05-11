@@ -1,5 +1,5 @@
 import {combineReducers} from "redux";
-import dialogReducer from "./dialogsReducer";
+import dialogReducer from "./dialogsReducer/dialogsReducer";
 import profileReducer from "./profileReducer";
 import usersReducer from "./UsersReducer";
 import authReducer from "./authReducer";
