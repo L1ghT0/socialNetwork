@@ -6,9 +6,11 @@ const SET_STATUS = 'SET_STATUS'
 const DELETE_POST = 'DELETE_POST'
 const UPDATE_AVATAR = 'UPDATE_AVATAR'
 const SET_IS_OWNER = 'SET_IS_OWNER'
+const INITIALIZED_PROFILE_SUCCESS = 'INITIALIZED_PROFILE_SUCCESS'
 
 
 let initialState = {
+    initializedProfile: false,
     postsData: [
         {id: 1, postText: 'Hi, how are you?', Likes: 12},
         {id: 2, postText: 'Its my first post', Likes: 6}
@@ -61,6 +63,11 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 isOwner: action.isOwner
             }
+        case INITIALIZED_PROFILE_SUCCESS:
+            return {
+                ...state,
+                initializedProfile: true
+            }
         default:
             break;
     }
@@ -73,19 +80,31 @@ export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile});
 export const setStatus = (status) => ({type: SET_STATUS, status});
 export const updateAvatarSuccess = (photos) => ({type: UPDATE_AVATAR, photos});
 export const setIsOwner = (isOwner) => ({type: SET_IS_OWNER, isOwner});
+export const initializedProfileSuccess = () => ({type: INITIALIZED_PROFILE_SUCCESS});
 
 
-export const getUserProfile = (userId) => (dispatch) => {
-    usersApi.getProfile(userId).then(response => {
-        dispatch(setUserProfile(response.data));
-    })
+const getUserProfile = (userId) => {
+    return usersApi.getProfile(userId).then(response => response.data)
+}
+const getStatus = (userId) => {
+    return profileApi.getStatus(userId).then(response => response.data)
 }
 
-export const getStatus = (userId) => (dispatch) => {
-    profileApi.getStatus(userId)
-        .then(response => {
-            dispatch(setStatus(response.data));
-        })
+export const initializeProfile = (userId) => async (dispatch, getState) => {
+    let copyUserId = userId;
+    let isOwner = false;
+    if(!userId){
+        copyUserId = getState().auth.userId
+        isOwner = true;
+    }
+
+    let userProfile = await getUserProfile(copyUserId);
+    let status = await getStatus(copyUserId);
+
+    dispatch(setUserProfile(userProfile));
+    dispatch(setStatus(status));
+    dispatch(setIsOwner(isOwner));
+    dispatch(initializedProfileSuccess());
 }
 
 export const updateStatus = (status) => (dispatch) => {

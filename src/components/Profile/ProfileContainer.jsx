@@ -1,26 +1,26 @@
 import React, {useEffect} from 'react';
 import {connect} from "react-redux";
 import Profile from "./Profile";
-import {getStatus, getUserProfile, updateStatus, updateAvatar, setIsOwner} from "../../redux/profileReducer";
+import {
+    updateStatus,
+    updateAvatar,
+    initializeProfile
+} from "../../redux/profileReducer";
 import {useParams} from 'react-router-dom'
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
-
+import Preloader from "../common/preloader/Preloader";
 
 const ProfileContainer = (props) => {
     let {userId} = useParams();
-    if (!userId) {
-        props.setIsOwner(true);
-        userId = props.authorizedUserId; // me "28816"
-    } else {
-        props.setIsOwner(false);
-    }
 
     useEffect(() => {
-        props.getUserProfile(userId);
-        props.getStatus(userId);
+        props.initializeProfile(userId);
     }, [userId])
 
+    if(!props.initializedProfile){
+        return <Preloader />
+    }
     return (
         <Profile {...props}/>
     );
@@ -32,18 +32,16 @@ let mapStateToProps = (state) => {
         profile: state.profilePage.profile,
         status: state.profilePage.status,
         authorizedUserId: state.auth.userId,
-        isAuthorized: state.auth.isAuthorized,
         isOwner: state.profilePage.isOwner,
+        initializedProfile: state.profilePage.initializedProfile,
     }
 }
 
 export default compose(
     connect(mapStateToProps, {
-        getUserProfile,
         updateStatus,
-        getStatus,
         updateAvatar,
-        setIsOwner
+        initializeProfile
     }),
     withAuthRedirect,
 )(ProfileContainer)
