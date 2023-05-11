@@ -1,9 +1,10 @@
-import {sendMessage} from "../../redux/dialogsReducer/dialogsReducer";
+import {sendMessage} from "../../redux/dialogsReducer/DialogsReducer";
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 import React from "react";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
+import {getDialogs, getMessages} from "../../redux/dialogsReducer/DialogsSelectors";
 
 
 const DialogsContainer = (props) => {
@@ -14,7 +15,8 @@ const DialogsContainer = (props) => {
 
 let mapStateToProps = (state) => {
     return {
-        dialogPage: state.dialogPage,
+        messages: getMessages(state),
+        dialogs: getDialogs(state),
     }
 }
 

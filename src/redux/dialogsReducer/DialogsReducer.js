@@ -1,13 +1,13 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 let initialState = {
-    dialogsData: [
+    dialogs: [
         {id: 1, name: 'unknown'},
         {id: 2, name: 'unknown'},
         {id: 3, name: 'unknown'},
         {id: 4, name: 'unknown'},
     ],
-    messagesData: [
+    messages: [
         {id: 1, message: 'hi'},
         {id: 2, message: 'hello'},
         {id: 3, message: 'Yo'},
@@ -20,8 +20,8 @@ const dialogsSlice = createSlice({
     initialState: initialState,
     reducers: {
         sendMessage(state, action) {
-            let id = state.messagesData.length + 1;
-            state.messagesData.push({id: id, message: action.payload})
+            let id = state.messages.length + 1;
+            state.messages.push({id: id, message: action.payload})
         }
     }
 })

@@ -8,10 +8,10 @@ import {maxLengthCreator, required} from "../../utils/validators/validators";
 
 const Dialogs = (props) => {
 
-    let dialogsElements = props.dialogPage.dialogsData
+    let dialogsElements = props.dialogs
         .map(dialog => <Dialog name={dialog.name} id={dialog.id} key={dialog.id}/>);
 
-    let messagesElements = props.dialogPage.messagesData
+    let messagesElements = props.messages
         .map(message => <Message message={message.message} id={message.id} key={message.id}/>);
 
 
