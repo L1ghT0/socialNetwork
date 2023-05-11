@@ -91,12 +91,8 @@ const getStatus = (userId) => {
 }
 
 export const initializeProfile = (userId) => async (dispatch, getState) => {
-    let copyUserId = userId;
-    let isOwner = false;
-    if(!userId){
-        copyUserId = getState().auth.userId
-        isOwner = true;
-    }
+    let copyUserId = userId || getState().auth.userId;
+    let isOwner = (typeof(userId) === "undefined");
 
     let userProfile = await getUserProfile(copyUserId);
     let status = await getStatus(copyUserId);
