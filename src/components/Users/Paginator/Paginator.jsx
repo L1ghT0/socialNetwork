@@ -21,7 +21,7 @@ const Paginator = (props) => {
     pages = pages.map(p => {
         return  <>
                 {p === lastPade && nextPage && nextPage + 1 !== p && <span>...</span>}
-                <span className={props.currentPage === p && P_classes.selectedPage} onClick={()=>handlePageChange(p)}>{p}</span>
+                <span className={props.currentPage === p ? P_classes.selectedPage : undefined} onClick={()=>handlePageChange(p)}>{p}</span>
                 {p === 1 && prevPage && prevPage - 1 !== p && <span>...</span>}
                 </>
     })
