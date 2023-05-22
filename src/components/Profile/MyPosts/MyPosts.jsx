@@ -16,8 +16,8 @@ const MyPosts = (props) => {
 
     return (
         <div className={MP_classes.postsBlock}>
-            My posts
-            <AddPostRedux onSubmit={addPost}/>
+            <span>My posts</span>
+            {props.isOwner && <AddPostRedux onSubmit={addPost}/>}
             <div className={MP_classes.posts}>
                 {PostsElements}
             </div>

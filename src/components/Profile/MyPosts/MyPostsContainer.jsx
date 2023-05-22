@@ -16,6 +16,7 @@ let mapStateToProps = (state) => {
         newPostText: state.profilePage.newPostText,
         postsData: state.profilePage.postsData,
         photos: state.profilePage.profile.photos,
+        isOwner: state.profilePage.isOwner,
     }
 }
 
