@@ -5,13 +5,59 @@
     padding-top: 10px;
     max-height: 400px;
 }
+.nav div{
+    margin-top: 8px;
+    margin-left: 2px;
+}
+.sprites{
+    background-image: url(../../assets/sprites/navbarIcons/spritesheet.png);
+    background-repeat: no-repeat;
+    display: inline-block;
+    margin-right: 6px;
+    vertical-align:bottom;
+}
 
+.spriteUser{
+    width: 16px;
+    height: 16px;
+    background-position: -31px -5px;
+}
+.spriteGroup {
+    width: 16px;
+    height: 16px;
+    background-position: -5px -5px;
+}
+
+.spriteMessage {
+    width: 16px;
+    height: 16px;
+    background-position: -5px -31px;
+}
+
+.spriteNews {
+    width: 16px;
+    height: 16px;
+    background-position: -31px -31px;
+}
+
+.spriteMusicalNote {
+    width: 16px;
+    height: 16px;
+    background-position: -57px -5px;
+}
+
+.spriteSetting {
+    width: 16px;
+    height: 16px;
+    background-position: -57px -31px;
+}
 .nav a{
-    color: white;
+    color: black;
     text-decoration: none;
+    /*vertical-align:top;*/
 }
 
 .nav a.active{
-    color: darkgrey;
+    color: white;
 }
 

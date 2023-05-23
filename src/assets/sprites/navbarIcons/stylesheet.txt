@@ -4,37 +4,36 @@
     display: block;
 }
 
-.sprite-001-group {
+.spriteUser{
+    width: 16px;
+    height: 16px;
+    background-position: -31px -5px;
+}
+.spriteGroup {
     width: 16px;
     height: 16px;
     background-position: -5px -5px;
 }
 
-.sprite-002-user {
-    width: 16px;
-    height: 16px;
-    background-position: -31px -5px;
-}
-
-.sprite-003-comment {
+.spriteMessage {
     width: 16px;
     height: 16px;
     background-position: -5px -31px;
 }
 
-.sprite-004-newspaper {
+.spriteNews {
     width: 16px;
     height: 16px;
     background-position: -31px -31px;
 }
 
-.sprite-005-musical-note {
+.spriteMusicalNote {
     width: 16px;
     height: 16px;
     background-position: -57px -5px;
 }
 
-.sprite-006-setting {
+.spriteSetting {
     width: 16px;
     height: 16px;
     background-position: -57px -31px;
