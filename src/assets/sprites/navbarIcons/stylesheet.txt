@@ -1,0 +1,41 @@
+.sprite {
+    background-image: url(spritesheet.png);
+    background-repeat: no-repeat;
+    display: block;
+}
+
+.sprite-001-group {
+    width: 16px;
+    height: 16px;
+    background-position: -5px -5px;
+}
+
+.sprite-002-user {
+    width: 16px;
+    height: 16px;
+    background-position: -31px -5px;
+}
+
+.sprite-003-comment {
+    width: 16px;
+    height: 16px;
+    background-position: -5px -31px;
+}
+
+.sprite-004-newspaper {
+    width: 16px;
+    height: 16px;
+    background-position: -31px -31px;
+}
+
+.sprite-005-musical-note {
+    width: 16px;
+    height: 16px;
+    background-position: -57px -5px;
+}
+
+.sprite-006-setting {
+    width: 16px;
+    height: 16px;
+    background-position: -57px -31px;
+}
