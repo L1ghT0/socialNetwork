@@ -39,7 +39,7 @@ const LoginForm = (props) => {
 
 const LoginReduxForm = reduxForm({form: 'login'})(LoginForm)
 
-const Login = (props) => {
+const ObsoleteLogin = (props) => {
     const navigate = useNavigate();
 
     let onSubmit = (formData) => {
@@ -66,4 +66,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, {login})(Login);
+export default connect(mapStateToProps, {login})(ObsoleteLogin);
