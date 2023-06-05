@@ -2,13 +2,12 @@ import React, {useEffect} from 'react';
 import {SubmitHandler, useForm} from 'react-hook-form'
 import {useNavigate} from "react-router-dom";
 import {connect} from "react-redux";
-import {login as loginThunk} from "../../redux/authReducer";
+import {login} from "../../redux/authReducer";
 
 export interface myProps {
     isAuthorized: boolean,
     captchaUrl?: string,
-
-    // login(email: string, password: string, rememberMe: boolean, captchaUrl?: string): typeof loginThunk;
+    login(email: string, password: string, rememberMe: boolean, captchaUrl?: string): Promise<void>;
 }
 
 type Inputs = {
@@ -18,7 +17,7 @@ type Inputs = {
     captchaUrl?: string
 }
 
-function Login(props: any /*myProps*/) {
+function LoginForm(props: myProps) {
     // The page "Login" will navigate to "profile" in case user is being authorized
     const navigate = useNavigate();
     useEffect(() => {
@@ -29,7 +28,7 @@ function Login(props: any /*myProps*/) {
 
     const {handleSubmit, register, formState: {errors}} = useForm<Inputs>();
     const onSubmit: SubmitHandler<Inputs> = formData => {
-        props.loginThunk(formData.email, formData.password, formData.rememberMe, formData.captchaUrl)
+        props.login(formData.email, formData.password, formData.rememberMe, formData.captchaUrl)
     };
 
     return (
@@ -87,4 +86,4 @@ const mapStateToProps = (state: { auth: { captchaUrl: string; isAuthorized: bool
     }
 }
 
-export default connect(mapStateToProps, {loginThunk})(Login);
+export default connect(mapStateToProps, {login})(LoginForm);

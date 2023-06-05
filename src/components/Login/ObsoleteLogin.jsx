@@ -5,7 +5,6 @@ import {required} from "../../utils/validators/validators";
 import {connect} from "react-redux";
 import {login} from "../../redux/authReducer";
 import { useNavigate } from "react-router-dom";
-import { redirect } from "react-router-dom";
 import FC_classes from '../common/FormsControls/FormsControls.module.css'
 
 const LoginForm = (props) => {
@@ -47,7 +46,6 @@ const ObsoleteLogin = (props) => {
     }
 
     if(props.isAuthorized){
-         //return redirect("/profile/");
         navigate("/profile")
     }
 

@@ -6,7 +6,7 @@ import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
-import Login from "./components/Login/Login";
+import LoginForm from "./components/Login/LoginForm";
 import {connect} from "react-redux";
 import {initializeApp} from "./redux/appReducer";
 import Preloader from "./components/common/preloader/Preloader";
@@ -31,7 +31,7 @@ function App(props) {
                         <Route path='/profile/:userId?' element={<ProfileContainer/>}/>
                         <Route path='/dialogs/*' element={<DialogsContainer/>}/>
                         <Route path='/users/*' element={<UsersContainer />}/>
-                        <Route path='/login' element={<Login />}/>
+                        <Route path='/login' element={<LoginForm />}/>
                     </Routes>
                 </div>
             </div>
