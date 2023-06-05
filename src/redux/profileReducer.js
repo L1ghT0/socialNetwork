@@ -84,7 +84,7 @@ export const initializedProfileSuccess = () => ({type: INITIALIZED_PROFILE_SUCCE
 
 
 const getUserProfile = (userId) => {
-    return usersApi.getProfile(userId).then(response => response.data)
+    return profileApi.getProfile(userId).then(response => response.data)
 }
 const getStatus = (userId) => {
     return profileApi.getStatus(userId).then(response => response.data)
