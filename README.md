@@ -1,6 +1,12 @@
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Log in
+
+To log into my application use the account below:
+
+Email: korameh647@lieboe.com\
+Password: korameh647 
 
 ## Available Scripts
 
